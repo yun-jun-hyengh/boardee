@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board")
 public class BoardController {
 	@GetMapping("/boardfile")
-	public String boardList() {
+	public String boardList() { // 여기 한번 수정 
 		return "board/boardlist";
 	}
 }
