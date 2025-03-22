@@ -11,4 +11,4 @@ public class BoardController {
 	public String boardList() { // 여기 한번 수정 
 		return "board/boardlist"; // 현재 board디렉토리에 boardlist라는 jsp 파일이 존재함 111467
 	}
-}//
+}
