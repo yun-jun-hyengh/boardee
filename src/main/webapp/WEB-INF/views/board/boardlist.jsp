@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="${cpath }/resources/css/styles.css" rel="stylesheet" />
+        <link href="${path}/resources/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 <div class="container">
@@ -25,7 +25,7 @@
 			<div class="col-lg-8">
 				<div class="panel-body" style="margin-top: 40px;">
 				<h2 class="page-header"><span style="color: #ff52a0;">
-						 <a href="#" class="btn btn-primary" style="float: right;">글쓰기</a>
+						 <a href="${path}/board/boardWriter" class="btn btn-primary" style="float: right;">글쓰기</a>
 	                  <br>
 	                </span>
 	            </h2>
@@ -33,18 +33,22 @@
 	         		<thead>
 	         			<tr style="background-color: #A901DB; color: white;  border: 0px solid #f78f24;">
 	         					<th>번호</th>
+								<th>제목</th>
 								<th>작성자</th>
-								<th>내용</th>
 								<th>첨부파일유무</th>
+								<th>등록일자</th>
 						</tr>
 					</thead>
-					<tr style="color:#ff5xa0;">
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						
-					</tr>
+					<c:forEach var="boardList" items="${boardList}">
+						<tr style="color:#ff5xa0;">
+							<td>${boardList.idx}</td>
+							<td>${boardList.title}</td>
+							<td>${boardList.writer}</td>
+							<td>${boardList.file_existence}</td>
+							<td>${boardList.regdate}</td>
+						</tr>
+					</c:forEach>
+					
 	         	</table>
 	         	
 	         	
