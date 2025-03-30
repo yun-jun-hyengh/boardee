@@ -129,7 +129,29 @@ public class BoardController {
 			Set<PosixFilePermission> permissions = PosixFilePermissions.fromString("rwxr-xr-x");
 			Files.createDirectories(path, PosixFilePermissions.asFileAttribute(permissions));
 		}
+		
+		try {
+			changeOwnerAndGroup(dirPath, "tomcat", "tomcat");
+		} catch (IOException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new IOException("Failed to change owner and group", e);
+		}
 	}
 	
-	
+	private static void changeOwnerAndGroup(String dirPath, String owner, String group) throws IOException {
+		String command = String.format("chown -R %s:%s %s", owner, group, dirPath);
+		ProcessBuilder processBuilder = new ProcessBuilder();
+		processBuilder.command("bash", "-c", command);
+		processBuilder.inheritIO();
+		Process process = processBuilder.start();
+		try {
+			int exitCode = process.waitFor();
+			if(exitCode != 0) {
+				throw new IOException("Failed to change owner and group for directory: " + dirPath);
+			}
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
