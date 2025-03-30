@@ -35,6 +35,11 @@ public class BoardController {
 	@Autowired
 	private EntityManager entityManager;
 	
+	@GetMapping("/")
+	public String Board() {
+		return "board/boardlist";
+	}
+	
 	// 윈도우
 	//private static final String UPLOAD_DIR = "C:/upload/";
 	
