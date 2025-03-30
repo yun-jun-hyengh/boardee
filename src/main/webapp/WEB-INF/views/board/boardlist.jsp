@@ -42,7 +42,7 @@
 					<c:forEach var="boardList" items="${boardList}">
 						<tr style="color:#ff5xa0;">
 							<td>${boardList.idx}</td>
-							<td>${boardList.title}</td>
+							<td><a href="${path}/board/boardDetail/${boardList.idx}">${boardList.title}</a></td>
 							<td>${boardList.writer}</td>
 							<td>${boardList.file_existence}</td>
 							<td>${boardList.regdate}</td>
