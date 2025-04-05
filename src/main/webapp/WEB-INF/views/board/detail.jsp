@@ -59,7 +59,8 @@
 									href="${path}/board/boardfile"
 									style="cursor: pointer; margin-top: 0; height: 40px; color: white; background-color: #01A9DB; border: 0px solid #388E3C; opacity: 0.8">목록</a>
 							</form>
-
+							<br>
+							<button onclick="deletePost(${detail.idx})" class="btn form-control" style="cursor: pointer; margin-top: 0; height: 40px; color: white; background-color: #DF013A; border: 0px solid #388E3C; opacity: 0.8">삭제</button>
 
 						</div>
 					</div>
@@ -68,4 +69,21 @@
 		</div>
 	</header>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	function deletePost(idx) {
+		//console.log(idx);
+		if(!confirm("정말로 삭제하시겠습니까")) return;
+		
+		$.ajax({
+			type: "POST",
+			url: "${path}/board/deleteBoard",
+			data: { idx: idx },
+			success: function(response) {
+				alert(response);
+				window.location.href = "${path}/board/boardfile";
+			}
+		});
+	}
+</script>
 </html>
