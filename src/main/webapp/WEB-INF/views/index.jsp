@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h2>Hello World!!~~#@$%^</h2>
-	<a href="${path}/board/boardfile">게시판</a>
+	<a href="${path}/board/boardfile">게시판입니다</a>
 </body>
 </html>
